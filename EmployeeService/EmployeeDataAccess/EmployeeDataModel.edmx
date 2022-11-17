@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmployeeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'employee_list.dbo.employees' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="emp_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="date_of_birth" Type="datetime" />
+          <Property Name="date_of_joining" Type="datetime" />
+          <Property Name="department" Type="nvarchar" MaxLength="50" />
+          <Property Name="report_to" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="resigned" Type="bit" />
+          <Property Name="resigned_date" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="EmployeeDBModelStoreContainer">
+          <EntitySet Name="employees" EntityType="Self.employees" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [employees].[emp_id] AS [emp_id], 
+    [employees].[emp_code] AS [emp_code], 
+    [employees].[emp_name] AS [emp_name], 
+    [employees].[date_of_birth] AS [date_of_birth], 
+    [employees].[date_of_joining] AS [date_of_joining], 
+    [employees].[department] AS [department], 
+    [employees].[report_to] AS [report_to], 
+    [employees].[contact_number] AS [contact_number], 
+    [employees].[resigned] AS [resigned], 
+    [employees].[resigned_date] AS [resigned_date]
+    FROM [dbo].[employees] AS [employees]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="date_of_birth" Type="DateTime" Precision="3" />
+          <Property Name="date_of_joining" Type="DateTime" Precision="3" />
+          <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="report_to" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resigned" Type="Boolean" />
+          <Property Name="resigned_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="employeeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="employees" EntityType="Self.employee" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EmployeeDBModelStoreContainer" CdmEntityContainer="employeeDBEntities">
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="EmployeeDBModel.employee">
+              <MappingFragment StoreEntitySet="employees">
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_code" ColumnName="emp_code" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+                <ScalarProperty Name="date_of_joining" ColumnName="date_of_joining" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="report_to" ColumnName="report_to" />
+                <ScalarProperty Name="contact_number" ColumnName="contact_number" />
+                <ScalarProperty Name="resigned" ColumnName="resigned" />
+                <ScalarProperty Name="resigned_date" ColumnName="resigned_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

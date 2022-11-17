@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emp_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="emp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_of_birth" Type="DateTime" Precision="3" />
+    <Property Name="date_of_joining" Type="DateTime" Precision="3" />
+    <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="report_to" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="resigned" Type="Boolean" />
+    <Property Name="resigned_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="employeeDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="employees" EntityType="Self.employee" />
+  </EntityContainer>
+</Schema>

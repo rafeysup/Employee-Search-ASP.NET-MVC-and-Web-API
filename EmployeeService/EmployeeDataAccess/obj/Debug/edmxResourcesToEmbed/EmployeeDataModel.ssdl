@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'employee_list.dbo.employees' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="emp_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="date_of_birth" Type="datetime" />
+    <Property Name="date_of_joining" Type="datetime" />
+    <Property Name="department" Type="nvarchar" MaxLength="50" />
+    <Property Name="report_to" Type="nvarchar" MaxLength="50" />
+    <Property Name="contact_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="resigned" Type="bit" />
+    <Property Name="resigned_date" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="EmployeeDBModelStoreContainer">
+    <EntitySet Name="employees" EntityType="Self.employees" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [employees].[emp_id] AS [emp_id], 
+    [employees].[emp_code] AS [emp_code], 
+    [employees].[emp_name] AS [emp_name], 
+    [employees].[date_of_birth] AS [date_of_birth], 
+    [employees].[date_of_joining] AS [date_of_joining], 
+    [employees].[department] AS [department], 
+    [employees].[report_to] AS [report_to], 
+    [employees].[contact_number] AS [contact_number], 
+    [employees].[resigned] AS [resigned], 
+    [employees].[resigned_date] AS [resigned_date]
+    FROM [dbo].[employees] AS [employees]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
